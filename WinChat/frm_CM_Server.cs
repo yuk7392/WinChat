@@ -10,6 +10,7 @@ namespace WinChat
         public frm_CM_Server()
         {
             InitializeComponent();
+
         }
 
         public override void Received_DTO(DTOEventArgs e)
