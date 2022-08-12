@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Class\cFormManager.cs" />
     <Compile Include="Entity\eEntity.cs" />
+    <Compile Include="frm_CM_Server.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CM_Server.Designer.cs">
+      <DependentUpon>frm_CM_Server.cs</DependentUpon>
+    </Compile>
     <Compile Include="mdiWinChat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_CM_Server.resx">
+      <DependentUpon>frm_CM_Server.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mdiWinChat.resx">
       <DependentUpon>mdiWinChat.cs</DependentUpon>
     </EmbeddedResource>

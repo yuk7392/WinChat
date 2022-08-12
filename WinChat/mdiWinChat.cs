@@ -162,5 +162,31 @@ namespace WinChat
                 LogMgr.Write(AprCommon.DataLinkObject, ex);
             }
         }
+
+        private void rdbtnSetting_Server_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnSetting_Server.Checked)
+                tsBtnOpenServer.Enabled = true;
+            else
+                tsBtnOpenServer.Enabled = false;
+        }
+
+        private void tsBtnOpenServer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FormMgr.IsFormOpened("frm_CM_Server"))
+                {
+                    MsgBoxError("해당 기능은 이미 실행중입니다.");
+                    return;
+                }
+
+                FormMgr.ShowForm("frm_CM_Server", false, this, new DTOEventArgs(this.GetType().Name, "frm_CM_Server", string.Empty, tbSetting_IP.Text, tbSetting_Port.Text));
+            }
+            catch (Exception ex)
+            {
+                LogMgr.Write(AprCommon.DataLinkObject, ex);
+            }
+        }
     }
 }

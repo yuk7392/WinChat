@@ -57,6 +57,8 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.rdbtnSetting_User = new System.Windows.Forms.RadioButton();
             this.rdbtnSetting_Server = new System.Windows.Forms.RadioButton();
+            this.tsBtnOpenServer = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gbSetting.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -73,10 +75,12 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsBtnOpenServer,
+            this.tsBtnConnect,
             this.tsBtnSetting});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(997, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(1352, 26);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -93,9 +97,9 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 541);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 536);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(997, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1352, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -103,7 +107,7 @@
             // 
             this.gbSetting.Controls.Add(this.tableLayoutPanel1);
             this.gbSetting.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this.gbSetting.Location = new System.Drawing.Point(498, 169);
+            this.gbSetting.Location = new System.Drawing.Point(873, 155);
             this.gbSetting.Name = "gbSetting";
             this.gbSetting.Size = new System.Drawing.Size(467, 369);
             this.gbSetting.TabIndex = 3;
@@ -473,13 +477,33 @@
             this.rdbtnSetting_Server.Text = "서버";
             this.rdbtnSetting_Server.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdbtnSetting_Server.UseVisualStyleBackColor = true;
+            this.rdbtnSetting_Server.CheckedChanged += new System.EventHandler(this.rdbtnSetting_Server_CheckedChanged);
+            // 
+            // tsBtnOpenServer
+            // 
+            this.tsBtnOpenServer.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            this.tsBtnOpenServer.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnOpenServer.Image")));
+            this.tsBtnOpenServer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnOpenServer.Name = "tsBtnOpenServer";
+            this.tsBtnOpenServer.Size = new System.Drawing.Size(90, 23);
+            this.tsBtnOpenServer.Text = "서버 열기";
+            this.tsBtnOpenServer.Click += new System.EventHandler(this.tsBtnOpenServer_Click);
+            // 
+            // tsBtnConnect
+            // 
+            this.tsBtnConnect.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            this.tsBtnConnect.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnConnect.Image")));
+            this.tsBtnConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnConnect.Name = "tsBtnConnect";
+            this.tsBtnConnect.Size = new System.Drawing.Size(90, 23);
+            this.tsBtnConnect.Text = "서버 접속";
             // 
             // mdiWinChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(997, 563);
+            this.ClientSize = new System.Drawing.Size(1352, 558);
             this.Controls.Add(this.gbSetting);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -544,6 +568,8 @@
         private System.Windows.Forms.RadioButton rdbtnSetting_UpdateFalse;
         private System.Windows.Forms.TextBox tbSetting_Port;
         private System.Windows.Forms.TextBox tbSetting_IP;
+        private System.Windows.Forms.ToolStripButton tsBtnOpenServer;
+        private System.Windows.Forms.ToolStripButton tsBtnConnect;
     }
 }
 
