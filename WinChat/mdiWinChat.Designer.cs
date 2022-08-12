@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiWinChat));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsBtnOpenServer = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnConnect = new System.Windows.Forms.ToolStripButton();
             this.tsBtnSetting = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.gbSetting = new System.Windows.Forms.GroupBox();
@@ -57,8 +59,6 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.rdbtnSetting_User = new System.Windows.Forms.RadioButton();
             this.rdbtnSetting_Server = new System.Windows.Forms.RadioButton();
-            this.tsBtnOpenServer = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gbSetting.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,6 +83,26 @@
             this.toolStrip1.Size = new System.Drawing.Size(1352, 26);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsBtnOpenServer
+            // 
+            this.tsBtnOpenServer.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            this.tsBtnOpenServer.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnOpenServer.Image")));
+            this.tsBtnOpenServer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnOpenServer.Name = "tsBtnOpenServer";
+            this.tsBtnOpenServer.Size = new System.Drawing.Size(90, 23);
+            this.tsBtnOpenServer.Text = "서버 열기";
+            this.tsBtnOpenServer.Click += new System.EventHandler(this.tsBtnOpenServer_Click);
+            // 
+            // tsBtnConnect
+            // 
+            this.tsBtnConnect.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            this.tsBtnConnect.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnConnect.Image")));
+            this.tsBtnConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnConnect.Name = "tsBtnConnect";
+            this.tsBtnConnect.Size = new System.Drawing.Size(90, 23);
+            this.tsBtnConnect.Text = "서버 접속";
+            this.tsBtnConnect.Click += new System.EventHandler(this.tsBtnConnect_Click);
             // 
             // tsBtnSetting
             // 
@@ -479,25 +499,6 @@
             this.rdbtnSetting_Server.UseVisualStyleBackColor = true;
             this.rdbtnSetting_Server.CheckedChanged += new System.EventHandler(this.rdbtnSetting_Server_CheckedChanged);
             // 
-            // tsBtnOpenServer
-            // 
-            this.tsBtnOpenServer.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            this.tsBtnOpenServer.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnOpenServer.Image")));
-            this.tsBtnOpenServer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnOpenServer.Name = "tsBtnOpenServer";
-            this.tsBtnOpenServer.Size = new System.Drawing.Size(90, 23);
-            this.tsBtnOpenServer.Text = "서버 열기";
-            this.tsBtnOpenServer.Click += new System.EventHandler(this.tsBtnOpenServer_Click);
-            // 
-            // tsBtnConnect
-            // 
-            this.tsBtnConnect.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            this.tsBtnConnect.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnConnect.Image")));
-            this.tsBtnConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnConnect.Name = "tsBtnConnect";
-            this.tsBtnConnect.Size = new System.Drawing.Size(90, 23);
-            this.tsBtnConnect.Text = "서버 접속";
-            // 
             // mdiWinChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -514,6 +515,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.gbSetting.ResumeLayout(false);

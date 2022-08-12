@@ -13,6 +13,7 @@ namespace WinChat
 {
     public partial class frm_CM_Server : AprilFormBase
     {
+
         public frm_CM_Server()
         {
             InitializeComponent();

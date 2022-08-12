@@ -13,9 +13,24 @@ namespace WinChat
 {
     public partial class mdiWinChat : AprilFormBase
     {
+
+        private string cUserType { get; set; }
+        private string cNickname { get; set; }
+        private string cIp { get; set; }
+        private string cPort { get; set; }
+        private bool cAutoUpdate { get; set; }
+
         public mdiWinChat()
         {
             InitializeComponent();
+
+            if (!NetMgr.InternetConnected())
+            {
+                MsgBoxError("인터넷에 연결되어 있지 않습니다. 프로그램을 종료합니다.");
+                Application.Exit();
+            }
+
+            GetSetting();
         }
 
         private void tsBtnSetting_Click(object sender, EventArgs e)
@@ -97,6 +112,15 @@ namespace WinChat
                 tbSetting_IP.Text = RegistryMgr.GetApplicationKeyValue("Settings", "IP");
                 tbSetting_Port.Text = RegistryMgr.GetApplicationKeyValue("Settings", "Port");
                 rdbtnSetting_UpdateFalse.Checked = RegistryMgr.GetApplicationKeyValue("Settings", "AutoUpdate").Equals("1") ? false : true;
+
+                cUserType = rdbtnSetting_Server.Checked ? "Server" : "User";
+                cNickname = tbSetting_Nickname.Text;
+                cIp = tbSetting_IP.Text;
+                cPort = tbSetting_Port.Text;
+                cAutoUpdate = !rdbtnSetting_UpdateFalse.Checked;
+
+                if (rdbtnSetting_Server.Checked)
+                    rdbtnSetting_Server.PerformClick();
             }
             catch (Exception ex)
             {
@@ -113,6 +137,8 @@ namespace WinChat
                 RegistryMgr.CreateApplicationKeyValue("Settings", "IP", tbSetting_IP.Text);
                 RegistryMgr.CreateApplicationKeyValue("Settings", "Port", tbSetting_Port.Text);
                 RegistryMgr.CreateApplicationKeyValue("Settings", "AutoUpdate", rdbtnSetting_UpdateFalse.Checked ? "0" : "1");
+
+                GetSetting();
             }
             catch (Exception ex)
             {
@@ -125,9 +151,16 @@ namespace WinChat
             try
             {
                 if (RegistryMgr.OpenKey(RegistryMgr.APPLICATION_ONLY_SETTINGS_PATH) != null)
+                {
                     RegistryMgr.DeleteKey(RegistryMgr.APPLICATION_ONLY_SETTINGS_PATH);
+                    ClearSetting();
+                    cUserType = cNickname = cIp = cPort = string.Empty;
+                    cAutoUpdate = false;
+                }
                 else
+                {
                     MsgBoxError("저장된 설정이 존재하지 않습니다.");
+                }
             }
             catch (Exception ex)
             {
@@ -166,9 +199,18 @@ namespace WinChat
         private void rdbtnSetting_Server_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbtnSetting_Server.Checked)
+            {
                 tsBtnOpenServer.Enabled = true;
+
+                tbSetting_IP.Enabled = false;
+                tbSetting_IP.Text = NetMgr.GetPublicIP();
+            }
             else
+            {
                 tsBtnOpenServer.Enabled = false;
+
+                tbSetting_IP.Enabled = true;
+            }
         }
 
         private void tsBtnOpenServer_Click(object sender, EventArgs e)
@@ -177,16 +219,40 @@ namespace WinChat
             {
                 if (FormMgr.IsFormOpened("frm_CM_Server"))
                 {
-                    MsgBoxError("해당 기능은 이미 실행중입니다.");
+                    FormMgr.GetActiveForm("frm_CM_Server").Focus();
                     return;
                 }
 
-                FormMgr.ShowForm("frm_CM_Server", false, this, new DTOEventArgs(this.GetType().Name, "frm_CM_Server", string.Empty, tbSetting_IP.Text, tbSetting_Port.Text));
+                if (string.IsNullOrEmpty(cIp) || string.IsNullOrEmpty(cPort))
+                {
+                    MsgBoxError("설정된 정보가 존재하지 않습니다.");
+                    return;
+                }
+
+                FormMgr.ShowForm("frm_CM_Server", false, this, new DTOEventArgs(this.GetType().Name, "frm_CM_Server", string.Empty, cIp, cPort));
             }
             catch (Exception ex)
             {
                 LogMgr.Write(AprCommon.DataLinkObject, ex);
             }
+        }
+
+        private void tsBtnConnect_Click(object sender, EventArgs e)
+        {
+            if (FormMgr.IsFormOpened("frm_CM_Client"))
+            {
+                FormMgr.GetActiveForm("frm_CM_Client").Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(cIp) || string.IsNullOrEmpty(cPort))
+            {
+                MsgBoxError("설정된 정보가 존재하지 않습니다.");
+                return;
+            }
+
+            FormMgr.ShowForm("frm_CM_Client", false, this, new DTOEventArgs(this.GetType().Name, "frm_CM_Client", string.Empty, cIp, cPort));
+
         }
     }
 }
