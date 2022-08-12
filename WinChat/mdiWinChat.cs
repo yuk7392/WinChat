@@ -212,7 +212,7 @@ namespace WinChat
             {
                 if (FormMgr.IsFormOpened("frm_CM_Server"))
                 {
-                    FormMgr.GetActiveForm("frm_CM_Server").Focus();
+                    FormMgr.GetOpenForm("frm_CM_Server").Focus();
                     return;
                 }
 
@@ -234,7 +234,7 @@ namespace WinChat
         {
             if (FormMgr.IsFormOpened("frm_CM_Client"))
             {
-                FormMgr.GetActiveForm("frm_CM_Client").Focus();
+                FormMgr.GetOpenForm("frm_CM_Client").Focus();
                 return;
             }
 
