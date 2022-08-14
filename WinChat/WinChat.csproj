@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\cFormManager.cs" />
+    <Compile Include="Class\cMessageResolver.cs" />
     <Compile Include="Entity\eEntity.cs" />
     <Compile Include="frm_CM_Client.cs">
       <SubType>Form</SubType>
